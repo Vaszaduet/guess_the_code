@@ -31,6 +31,7 @@
   }
 
   .pwm-gradient {
+    -webkit-filter: blur(1px);
     filter: blur(1px);
   }
 }
@@ -62,6 +63,7 @@
   }
 
   .pwm-gradient {
+    -webkit-filter: blur(1px);
     filter: blur(1px);
   }
 }
@@ -92,7 +94,8 @@
     font-size: 126px;
   }
 
-    .pwm-gradient {
+  .pwm-gradient {
+    -webkit-filter: blur(1px);
     filter: blur(1px);
   }
 }

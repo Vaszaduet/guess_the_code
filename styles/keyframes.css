@@ -1,3 +1,24 @@
+@-webkit-keyframes backround_rgb {
+  0% {
+    background-color: rgb(186, 171, 201);
+  }
+  20% {
+    background-color: rgb(164, 184, 197);
+  }
+  40% {
+    background-color: rgb(154, 153, 185);
+  }
+  60% {
+    background-color: rgb(163, 196, 196);
+  }
+  80% {
+    background-color: rgb(176, 206, 198);
+  }
+  100% {
+    background-color: rgb(210, 228, 228);
+  }
+}
+
 @keyframes backround_rgb {
   0% {
     background-color: rgb(186, 171, 201);
@@ -16,6 +37,17 @@
   }
   100% {
     background-color: rgb(210, 228, 228);
+  }
+}
+
+@-webkit-keyframes pwm-pulse {
+  from {
+    transform: opacity(0);
+    transform: scale(0.98);
+  }
+  to {
+    transform: opacity(1);
+    transform: scale(1.02);
   }
 }
 

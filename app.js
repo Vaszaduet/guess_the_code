@@ -1,13 +1,12 @@
 "use strict";
 
 const buttons = document.querySelectorAll(".general_buttons");
-const sounds = {};
 const screenText = document.querySelector(".text");
 const video = document.getElementById("video");
 
-sounds.click = document.getElementById("click_sound");
-sounds.oof = document.getElementById("oof_sound");
-sounds.correct = document.getElementById("correct_sound");
+loadSound("click_sound", "click");
+loadSound("oof_sound", "oof");
+loadSound("correct_sound", "correct");
 
 const code_amount = 4;
 const app_status = { is_sleeping: false };
@@ -36,8 +35,7 @@ for (let index = 0; index < buttons.length; index++) {
     if (!app_status.is_sleeping) screenAddNumber(index + 1);
   });
   buttons[index].addEventListener("mousedown", () => {
-    sounds.click.currentTime = 0;
-    sounds.click.play();
+    playSound("click");
   });
 }
 
@@ -57,8 +55,7 @@ function screenCheck() {
 }
 
 async function codePass() {
-  sounds.correct.currentTime = 0.3;
-  sounds.correct.play();
+  playSound("correct", 0.3);
   animatePassText.play();
   app_status.is_sleeping = true;
   await sleep(1000);
@@ -75,8 +72,7 @@ async function codePass() {
 }
 
 async function codeFalse() {
-  sounds.oof.currentTime = 0.55;
-  sounds.oof.play();
+  playSound("oof", 0.5);
   animateFalseText.play();
   screenText.textContent = codeCompare(code, screenText.textContent);
   app_status.is_sleeping = true;
@@ -111,4 +107,26 @@ function getRandomCode(count) {
 
 function sleep(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
+const sounds = new window.AudioContext();
+function loadSound(elementId, soundName) {
+  const audioElement = document.getElementById(elementId);
+
+  fetch(audioElement.src)
+    .then((response) => response.arrayBuffer())
+    .then((arrayBuffer) => sounds.decodeAudioData(arrayBuffer))
+    .then((audioBuffer) => {
+      sounds[soundName] = audioBuffer;
+    })
+    .catch((error) => console.error("Error sound playing:", error));
+}
+
+function playSound(soundName, offset = 0) {
+  if (sounds[soundName] && sounds) {
+    const source = sounds.createBufferSource();
+    source.buffer = sounds[soundName];
+    source.connect(sounds.destination);
+    source.start(0, offset);
+  }
 }

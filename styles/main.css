@@ -1,26 +1,34 @@
 * {
   user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
   box-sizing: border-box;
+  -webkit-touch-callout: none;
 }
 
 body {
   margin: 0;
-  justify-items: center;
-  align-content: center;
+  display: flex;
+  justify-content: center;
   height: 100vh;
   width: 100vw;
+  -webkit-animation: backround_rgb 5s linear 0s infinite;
   animation: backround_rgb 5s linear 0s infinite;
+  -webkit-animation-direction: alternate;
   animation-direction: alternate;
 }
 
 .main {
   height: min(100vh, calc(100vw * 1.25));
+  width: min(100vw, calc(100vh * 0.75));
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 20% 1fr;
   row-gap: 5%;
   min-height: 400px;
   padding: 20px;
+  min-width: 300px;
 }
 
 .screen {
@@ -33,13 +41,16 @@ body {
 
 .video {
   height: 95%;
+  width: 100%;
   border-radius: 10px;
+  -webkit-filter: opacity(0.6);
   filter: opacity(0.6);
   margin: 0;
 }
 
 .text {
   font-size: 36px;
+  -webkit-filter: opacity(0.6);
   filter: opacity(0.6);
   color: rgb(233, 251, 255);
 }
@@ -53,13 +64,17 @@ body {
 }
 
 .container > button {
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
   background-color: rgb(124, 62, 240);
   aspect-ratio: 1 / 1;
+  width: 100%;
+  height: 100%;
   padding: 0;
   border-radius: 30px;
   font-size: 64px;
   transition: all 0.1s ease;
-  border: 5px groove rgb(0, 0, 0);
+  border: 5px groove rgb(49, 49, 49);
   z-index: 11;
   box-shadow: 0px 0px 15px 6px rgba(62, 17, 145, 0.445);
   cursor: pointer;
@@ -90,9 +105,11 @@ body {
     rgba(255, 255, 255, 0.03) 0%,
     rgba(0, 0, 0, 0) 70%
   );
+  -webkit-animation: pwm-pulse 0.01s infinite alternate;
   animation: pwm-pulse 0.01s infinite alternate;
   display: flex;
   justify-content: center;
   align-items: center;
+  -webkit-filter: blur(0.5px);
   filter: blur(0.5px);
 }
