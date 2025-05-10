@@ -1,0 +1,98 @@
+@media (min-width: 400px) and (min-height: 400px) {
+  .text {
+    font-size: 50px;
+  }
+}
+
+@media (min-width: 500px) and (min-height: 500px) {
+  .container > button {
+    font-size: 72px;
+    border-radius: 35px;
+  }
+
+  .main {
+    padding: 30px;
+  }
+
+  .container > button {
+    box-shadow: 0px 0px 15px 6px rgba(62, 17, 145, 0.445);
+  }
+
+  .container > button:hover {
+    box-shadow: 0px 0px 15px 6px rgba(62, 17, 145, 0.445);
+  }
+
+  .container > button:active {
+    box-shadow: 0px 0px 20px 15px rgba(62, 17, 145, 0.445);
+  }
+
+  .text {
+    font-size: 74px;
+  }
+
+  .pwm-gradient {
+    filter: blur(1px);
+  }
+}
+
+@media (min-width: 600px) and (min-height: 600px) {
+  .container > button {
+    font-size: 100px;
+    border-radius: 40px;
+  }
+
+  .main {
+    padding: 40px;
+  }
+
+  .container > button {
+    box-shadow: 0px 0px 15px 8px rgba(62, 17, 145, 0.445);
+  }
+
+  .container > button:hover {
+    box-shadow: 0px 0px 15px 8px rgba(62, 17, 145, 0.445);
+  }
+
+  .container > button:active {
+    box-shadow: 0px 0px 25px 20px rgba(62, 17, 145, 0.445);
+  }
+
+  .text {
+    font-size: 90px;
+  }
+
+  .pwm-gradient {
+    filter: blur(1px);
+  }
+}
+
+@media (min-width: 800px) and (min-height: 800px) {
+  .container > button {
+    font-size: 120px;
+    border-radius: 50px;
+  }
+
+  .main {
+    padding: 50px;
+  }
+
+  .container > button {
+    box-shadow: 0px 0px 15px 10px rgba(62, 17, 145, 0.445);
+  }
+
+  .container > button:hover {
+    box-shadow: 0px 0px 15px 10px rgba(62, 17, 145, 0.445);
+  }
+
+  .container > button:active {
+    box-shadow: 0px 0px 35px 25px rgba(62, 17, 145, 0.445);
+  }
+
+  .text {
+    font-size: 126px;
+  }
+
+    .pwm-gradient {
+    filter: blur(1px);
+  }
+}
