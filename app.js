@@ -1,5 +1,6 @@
 "use strict";
 
+const isTouchDevice = "ontouchstart" in window;
 const buttons = document.querySelectorAll(".general_buttons");
 const screenText = document.querySelector(".text");
 const video = document.getElementById("video");
@@ -34,9 +35,23 @@ for (let index = 0; index < buttons.length; index++) {
   buttons[index].addEventListener("click", () => {
     if (!app_status.is_sleeping) screenAddNumber(index + 1);
   });
-  buttons[index].addEventListener("mousedown", () => {
-    playSound("click");
-  });
+
+  if (isTouchDevice) {
+    buttons[index].addEventListener("touchstart", () => {
+      playSound("click");
+      buttons[index].classList.add("button_pressed");
+    });
+    buttons[index].addEventListener("touchend", () => {
+      buttons[index].classList.remove("button_pressed");
+    });
+    buttons[index].addEventListener("touchcancel", () => {
+      buttons[index].classList.remove("button_pressed");
+    });
+  } else {
+    buttons[index].addEventListener("mousedown", () => {
+      playSound("click");
+    });
+  }
 }
 
 function screenAddNumber(number) {
@@ -105,10 +120,6 @@ function getRandomCode(count) {
   return code;
 }
 
-function sleep(ms) {
-  return new Promise((resolve) => setTimeout(resolve, ms));
-}
-
 const sounds = new window.AudioContext();
 function loadSound(elementId, soundName) {
   const audioElement = document.getElementById(elementId);
@@ -129,4 +140,8 @@ function playSound(soundName, offset = 0) {
     source.connect(sounds.destination);
     source.start(0, offset);
   }
+}
+
+function sleep(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
 }
