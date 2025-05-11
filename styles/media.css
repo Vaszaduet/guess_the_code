@@ -100,7 +100,7 @@
   }
 }
 
-@media (hover: hover) {
+@media (hover: hover) and (pointer: fine) {
   .container > button {
     cursor: pointer;
   }
@@ -134,5 +134,9 @@
     background-color: rgb(113, 45, 240) !important;
     box-shadow: 0px 0px 40px 15px rgba(62, 17, 145, 0.5) !important;
     z-index: 10 !important;
+  }
+
+  .container > button {
+    transition: initial;
   }
 }
